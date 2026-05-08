@@ -16,8 +16,8 @@ Pressure-tests your customer discovery in four modes:
 See the [top-level README](../../README.md#install) for both install paths. TL;DR:
 
 ```
-/plugin marketplace add codyjlandstrom/claude-skills
-/plugin install mom-test@claude-skills
+/plugin marketplace add codyjlandstrom/pm-skills
+/plugin install mom-test@pm-skills
 ```
 
 ## Usage

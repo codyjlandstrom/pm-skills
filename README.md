@@ -1,4 +1,4 @@
-# Claude Skills
+# PM Skills
 
 Custom skills for Claude Code, built and verified with independent agent evals.
 
@@ -11,13 +11,13 @@ Both options install the same skill. **Plugin install (A)** is recommended — i
 ### A — Install via Claude Code plugin marketplace
 
 ```
-/plugin marketplace add codyjlandstrom/claude-skills
-/plugin install mom-test@claude-skills
+/plugin marketplace add codyjlandstrom/pm-skills
+/plugin install mom-test@pm-skills
 ```
 
 That's it. The skill is now available — invoke it with phrases like "mom test these questions" or "apply the mom test."
 
-To update later: `/plugin update mom-test@claude-skills`.
+To update later: `/plugin update mom-test@pm-skills`.
 
 ### B — Manual install (drop the .skill file in)
 
