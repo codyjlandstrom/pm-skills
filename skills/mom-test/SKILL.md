@@ -39,14 +39,20 @@ ambiguous, ask.
 
 The user has draft interview or discovery questions and wants them evaluated.
 
-For each question:
-- Classify it as **safe** (past behavior, specifics, their life) or **risky**
-  (hypothetical, opinion-seeking, pitching-disguised-as-asking, future-tense
-  promises, compliment-fishing)
-- For risky questions, explain *why* it's risky using framework language
-- Provide a rewritten version that preserves the intent but follows the rules
-- Flag if the overall question set is leading the witness toward a predetermined
-  answer
+For each question, classify it into one of three tiers:
+
+- **Safe**: Past behavior, specifics, about their life. No changes needed.
+- **Sequencing-sensitive**: The question follows the rules structurally, but it
+  reveals your focus area or hypothesis. Safe if asked later in the conversation
+  (after trust is built and broader context is established), but risky if asked
+  too early. Flag these with a note on where in the conversation they belong.
+- **Risky**: Hypothetical, opinion-seeking, pitching-disguised-as-asking,
+  future-tense promises, or compliment-fishing. Explain *why* it's risky using
+  framework language, and provide a rewritten version that preserves the intent
+  but follows the rules.
+
+Flag if the overall question set is leading the witness toward a predetermined
+answer.
 
 Format the output as a sequential review of each question. Don't just list
 problems in the abstract; rewrite every risky question so the user walks away
@@ -70,6 +76,12 @@ The questions should feel like a natural conversation, not an interrogation. If
 the user provides context about who they're talking to, tailor the language and
 framing accordingly.
 
+After the questions, include a short "Things You Should NOT Say" section. List
+3-5 specific phrases, framings, or question patterns that would accidentally
+reveal the hypothesis, pitch the solution, or otherwise contaminate the
+conversation. This helps the user stay disciplined during the live call when
+they're tempted to ad-lib.
+
 ### Mode 3: Conversation / Transcript Analysis
 
 The user provides notes, a transcript, or a summary of a customer conversation
@@ -85,8 +97,19 @@ Analyze for:
   a lot on that") without being pressed for numbers, frequency, or examples?
 - **Buried signals**: What offhand comments or complaints might indicate real
   pain that wasn't followed up on?
+- **Interviewer bias**: Flag any editorializing in the notes that reflects the
+  interviewer's feelings rather than observable facts. Phrases like "she seemed
+  really engaged," "he was excited about the idea," or "it was a really positive
+  call" are the interviewer's interpretation, not data. These are dangerous
+  because they inflate perceived signal and obscure what was actually said.
 - **Commitment check**: Did the conversation end with any form of advancement
   (intro, payment, follow-up meeting, access to data), or just a compliment?
+  Critically distinguish between **offered** commitments ("he said he'd intro me
+  to the CISO") and **realized** commitments ("he emailed the CISO and CC'd me
+  that afternoon"). An offered commitment is a weak signal until it actually
+  happens. Many offered intros, follow-ups, and meetings never materialize.
+  Score offered commitments one level lower on the commitment ladder than
+  realized ones.
 
 Provide a summary scorecard at the end: what was learned that's trustworthy, what
 sounded good but is unreliable, and what to dig into next time.
@@ -97,15 +120,25 @@ The user provides a product idea, feature spec, PRD, or strategic initiative and
 wants the riskiest assumptions surfaced.
 
 Process:
-1. List every implicit assumption (about the customer, the problem, the market,
-   the willingness to pay, the workflow, the switching cost, etc.)
+1. Sweep for assumptions across these categories systematically:
+   - **Customer**: Who has this problem? Are they who we think they are?
+   - **Problem**: Is the problem real, frequent, and painful enough to solve?
+   - **Existing behavior**: What are they doing today, and is it bad enough to
+     change?
+   - **Market**: Is the timing right? Is the market large enough?
+   - **Willingness to pay**: Will they spend money on this, and how much?
+   - **Workflow/adoption**: Will this fit into how they work, or does it require
+     behavior change?
+   - **Technical feasibility**: Can we actually build this?
+   - **Go-to-market**: Can we reach these customers, and through what channel?
 2. Rank them by risk: how bad is it if this assumption is wrong, and how
    confident are we that it's right?
 3. For the top 3-5 riskiest assumptions, provide a concrete conversation-based
    test: who to talk to, what to ask, and what answer would validate or
    invalidate the assumption
 4. Flag any assumptions that *can't* be tested through conversation (e.g., pure
-   technical feasibility) and suggest alternative validation methods
+   technical feasibility, market sizing) and suggest alternative validation
+   methods
 
 ## General Guidelines
 

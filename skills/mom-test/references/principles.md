@@ -185,6 +185,18 @@ by how encouraging it felt.
 If you leave a conversation with nothing higher than level 1, you have not
 validated anything, regardless of how positive the conversation felt.
 
+### Offered vs. Realized Commitments
+
+An offered commitment ("I'll intro you to our CISO") is not the same as a
+realized commitment (the intro email lands in your inbox). Many offered intros,
+follow-ups, and meetings never materialize. When analyzing a conversation, score
+offered commitments one level lower than realized ones on the ladder above.
+"He offered to connect me with the CISO" is not a Level 3; it's a Level 2 until
+the email is sent. Track whether offered commitments convert, because the
+conversion rate itself is a signal: a prospect who consistently follows through
+is demonstrating real interest, while one whose offers evaporate is giving you
+polite dismissals dressed up as advancement.
+
 ### How to push for advancement
 
 - "What would it take to try this with your team?"
@@ -242,3 +254,17 @@ After the conversation, ask:
 - "Everyone I know would want this."
 - Any statement about what they "would" do in a hypothetical scenario
 - Compliments on your pitch, demo, or presentation
+
+### Interviewer Bias (flag in conversation notes)
+When analyzing notes or transcripts, watch for the interviewer's own
+editorializing mixed in with customer data. These are feelings, not facts:
+- "She seemed really engaged the whole time"
+- "He was clearly excited about the idea"
+- "It was a really positive call"
+- "I could tell she was interested"
+- "The energy in the room was great"
+
+These are dangerous because they inflate perceived signal. A call can feel
+amazing and yield zero trustworthy information. When you see these in notes,
+flag them explicitly and redirect attention to what was actually said and what
+commitments were actually obtained.
