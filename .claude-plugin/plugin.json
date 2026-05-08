@@ -1,0 +1,11 @@
+{
+  "name": "mom-test",
+  "description": "Apply Rob Fitzpatrick's 'The Mom Test' framework to customer discovery: review interview questions for bias, generate questions from a hypothesis, analyze call transcripts for buried signals, and extract risky assumptions from product ideas.",
+  "version": "1.0.0",
+  "author": {
+    "name": "Cody Landstrom",
+    "email": "cody@landstrom.co"
+  },
+  "homepage": "https://github.com/codyjlandstrom/claude-skills",
+  "license": "MIT"
+}
