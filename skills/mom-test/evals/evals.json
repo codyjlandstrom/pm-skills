@@ -1,0 +1,69 @@
+{
+  "skill_name": "mom-test",
+  "evals": [
+    {
+      "id": 1,
+      "name": "question-review-all-risky",
+      "mode": "Mode 1: Question Review",
+      "prompt": "Use the mom test skill to review these interview questions. I'm talking to engineering managers at mid-market companies about our AI agent feature:\n\n1. Would you use AI agents in your development workflow?\n2. How much would you pay for AI-powered dev environments?\n3. Do you think your team would benefit from automated environment setup?\n4. If we built a tool that spun up AI coding agents in your cloud, would that be useful?\n5. Don't you think onboarding new devs takes too long?",
+      "expected_output": "All five questions should be flagged as risky. Q1 is hypothetical/future-tense. Q2 is hypothetical spending. Q3 is opinion-seeking. Q4 is premature solution / pitching disguised as asking. Q5 is a leading question. Each should get a rewritten version grounded in past behavior and specifics. The overall set should be flagged as leading the witness.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "name": "question-review-mixed-quality",
+      "mode": "Mode 1: Question Review",
+      "prompt": "Mom test this question set. I'm prepping for a call with a platform engineering lead at a fintech company:\n\n1. Walk me through what happens when a new engineer joins your team. What does their first week look like?\n2. Tell me about the last time a developer had to wait for an environment to be set up. How long did it take?\n3. Would a self-service dev environment tool save your team time?\n4. What tools are you currently using to manage developer environments?\n5. How much is your team spending on infrastructure for dev environments right now?\n6. If we could cut your onboarding time in half, would that be worth paying for?",
+      "expected_output": "Q1, Q2, Q4, Q5 should be flagged as safe (past behavior, specifics, their life). Q3 should be flagged as risky (hypothetical, opinion). Q6 should be flagged as risky (premature solution combined with hypothetical willingness to pay). Rewrites provided for Q3 and Q6 only. Should note the set is mostly solid but the two risky ones undermine it by tipping into pitch mode.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "name": "question-generation-onboarding",
+      "mode": "Mode 2: Question Generation",
+      "prompt": "Apply the mom test. We're assuming that engineering managers at mid-market companies (100-1000 employees) are frustrated with how long it takes to onboard new developers onto their codebase. Generate interview questions to test this.",
+      "expected_output": "Should restate the assumption clearly, then produce 5-8 questions ordered from broad/warm-up to specific/commitment. Questions should never mention onboarding tools or solutions directly. Should include at least one advancement question (intro, pilot, etc). Each question should have a parenthetical noting what a strong vs weak signal looks like. No question should be answerable with just 'yes that sounds great.'",
+      "files": []
+    },
+    {
+      "id": 4,
+      "name": "question-generation-with-persona",
+      "mode": "Mode 2: Question Generation",
+      "prompt": "Mom test this for me. Our hypothesis is that DevOps teams at enterprises are manually managing Kubernetes cluster upgrades and it's painful enough that they'd pay for automation. I'm talking to a Senior DevOps Engineer at a healthcare company next Tuesday.",
+      "expected_output": "Should tailor questions to a senior IC (not a budget holder), which means the advancement question might be an intro to their manager or a willingness to participate in a pilot rather than a purchasing commitment. Questions should probe for specifics around frequency of upgrades, time spent, incidents caused, workarounds built. Should NOT mention 'our product' or 'automation tool' in any question.",
+      "files": []
+    },
+    {
+      "id": 5,
+      "name": "transcript-analysis-fake-positive",
+      "mode": "Mode 3: Conversation Analysis",
+      "prompt": "Use the mom-test skill to analyze this conversation summary:\n\nI spoke with the VP of Engineering at a Series B startup (about 80 engineers). Key highlights:\n- She said developer onboarding is \"definitely a pain point\" for her org\n- She loved the idea of cloud-based dev environments and said \"we'd probably pay $50/seat/month for something like that\"\n- She mentioned they currently use a wiki with setup instructions that \"nobody follows\"\n- She said she'd \"love to see a demo when you have one ready\"\n- When I asked about budget, she said \"we always find budget for things that save engineering time\"\n- The call lasted 25 minutes and she seemed really engaged the whole time",
+      "expected_output": "Should flag most of this as unreliable. 'Definitely a pain point' is generic enthusiasm with no specifics. The $50/seat quote is hypothetical future spending. 'Love to see a demo' is a weak non-commitment (no date, no stakeholders). 'We always find budget' is a deflection. The wiki comment is the ONE buried signal worth following up on because it's a specific existing behavior. Should score this conversation as mostly noise with one real thread to pull. Should note no real commitment was obtained.",
+      "files": []
+    },
+    {
+      "id": 6,
+      "name": "transcript-analysis-with-real-signals",
+      "mode": "Mode 3: Conversation Analysis",
+      "prompt": "Mom test this customer conversation for me:\n\nTalked to the Head of Platform at a logistics company, ~200 engineers. Notes:\n- They built an internal tool 18 months ago to automate dev environment provisioning. Two engineers maintain it part-time.\n- The tool breaks \"every other Kubernetes upgrade\" and it took them 3 weeks to fix it after the last upgrade in November\n- They evaluated Gitpod last year but dropped it because of air-gapped requirements\n- He asked if we support on-prem deployment and whether we've worked with companies that have FedRAMP requirements\n- He said his team wastes roughly 15-20 hours per week aggregate on environment-related support tickets\n- He offered to connect me with their CISO to discuss security requirements\n- No demo was scheduled but he said he'd bring it up at their next platform team retro",
+      "expected_output": "Should identify strong signals throughout. The internal tool investment (2 engineers, 18 months) proves real pain and existing spending. The 3-week fix is a specific, costly incident. Gitpod evaluation shows active solution-seeking. The specific questions about on-prem and FedRAMP show real buying criteria. 15-20 hours/week is quantified pain. The CISO intro is a real commitment (reputation on the line). Should note the retro mention is softer but still a concrete next step. Should score this as a high-signal conversation with real advancement.",
+      "files": []
+    },
+    {
+      "id": 7,
+      "name": "assumption-extraction-feature",
+      "mode": "Mode 4: Assumption Extraction",
+      "prompt": "Apply the mom test to this feature idea and extract the assumptions:\n\nWe want to add a 'Smart Preview' button to our developer platform. When a developer pushes code, instead of deploying to a shared preview environment, we'd spin up an ephemeral environment with their changes, run a suite of automated checks, and generate a visual diff of UI changes. Engineering managers could then approve changes directly from a Slack notification without context-switching to a browser.",
+      "expected_output": "Should surface assumptions including: developers currently have a shared preview environment (and that's a pain point), the approval bottleneck is real and costly, engineering managers want to approve from Slack specifically, visual diffs are more useful than existing diff tools, automated checks aren't already running in CI, the ephemeral environment spin-up time is fast enough to not be annoying. Should rank by risk and provide conversation-based tests for the top assumptions. Should flag technical assumptions (spin-up time, visual diff accuracy) as not testable through conversation.",
+      "files": []
+    },
+    {
+      "id": 8,
+      "name": "assumption-extraction-strategic",
+      "mode": "Mode 4: Assumption Extraction",
+      "prompt": "Mom test this. We're considering adding ARM cluster support (AWS Graviton) to our platform. The thesis is that enterprise customers are migrating to ARM for cost savings and they need their dev environments to match production architecture. We'd roll it out in phases: first ARM node pools, then ARM-native builds, then mixed-architecture preview environments.",
+      "expected_output": "Should surface assumptions about whether enterprises are actually migrating to ARM (vs just evaluating), whether dev/prod architecture mismatch is causing real bugs or just theoretical concern, whether cost savings from ARM are large enough to motivate workflow changes, whether developers care about architecture parity or just want things to work. Should note that 'enterprises are migrating to ARM' is testable through conversation but 'ARM reduces costs by X%' is a market/benchmarking question. The phased rollout assumptions (that customers need all three phases, that they'd adopt in that order) should be flagged.",
+      "files": []
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+# Build artifacts
+*.skill
+!releases/*.skill
+dist/
+
+# Python
+__pycache__/
+*.pyc
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Test workspace
+*-workspace/
+iteration-*/
