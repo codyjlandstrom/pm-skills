@@ -8,38 +8,38 @@ Most published skills get written, eyeballed, and shipped. That's fine for perso
 
 Both options install the same skill. **Plugin install (A)** is recommended — it gives you updates via `/plugin update` and namespaces the skill cleanly. **Manual install (B)** is the fallback if you don't use Claude Code's plugin system.
 
-### A — Install via Claude Code plugin marketplace
+### Option A: Install via Claude Code plugin marketplace
 
 ```
 /plugin marketplace add codyjlandstrom/pm-skills
 /plugin install mom-test@pm-skills
 ```
 
-That's it. The skill is now available — invoke it with phrases like "mom test these questions" or "apply the mom test."
+After running these, the skill should be availble. Invoke it with phrases like "mom test these questions" or "apply the mom test."
 
 To update later: `/plugin update mom-test@pm-skills`.
 
-### B — Manual install (drop the .skill file in)
+### Option B: Manual install (drop the .skill file in)
 
 1. Download [`releases/mom-test.skill`](releases/mom-test.skill).
-2. The file is a zip — extract it to `~/.claude/skills/`. You should end up with `~/.claude/skills/mom-test/SKILL.md`.
+2. The file is a zip - extract it to `~/.claude/skills/`. You should end up with `~/.claude/skills/mom-test/SKILL.md`.
 3. Restart Claude Code or start a new session.
 
 ## Skills in this repo
 
 ### [Mom Test](skills/mom-test/)
 
-Applies Rob Fitzpatrick's *The Mom Test* framework to product discovery work. Four modes:
+Applies Rob Fitzpatrick's *The Mom Test* framework to product discovery work. It has four modes:
 
-- **Question Review** — classifies draft interview questions as Safe / Sequencing-sensitive / Risky, with rewrites for the risky ones.
-- **Question Generation** — given a hypothesis, produces 5–8 discovery questions that test it without revealing it. Includes a "Things You Should NOT Say" section for live-call discipline.
-- **Conversation Analysis** — analyzes call transcripts for compliments, hypothetical traps, buried signals, and interviewer bias. Distinguishes offered commitments from realized ones.
-- **Assumption Extraction** — sweeps a product idea for assumptions across 8 categories (customer, problem, existing behavior, market, willingness to pay, workflow, technical feasibility, GTM), ranks them by risk, and gives you a conversation-based test for each top-tier one.
+- **Question Review**: classifies draft interview questions as Safe / Sequencing-sensitive / Risky, with rewrites for the risky ones.
+- **Question Generation**: given a hypothesis, produces 5–8 discovery questions that test it without revealing it. Includes a "Things You Should NOT Say" section for live-call discipline.
+- **Conversation Analysis**: analyzes call transcripts for compliments, hypothetical traps, buried signals, and interviewer bias. Distinguishes offered commitments from realized ones.
+- **Assumption Extraction**: sweeps a product idea for assumptions across 8 categories (customer, problem, existing behavior, market, willingness to pay, workflow, technical feasibility, GTM), ranks them by risk, and gives you a conversation-based test for each top-tier one.
 
 **Eval receipts:**
 - [Reference run](skills/mom-test/evals/eval-results.md) (run by the same session that wrote the skill — known biased baseline)
-- [Independent run v1](skills/mom-test/evals/eval-results-independent.md) — 8 fresh sub-agents, no exposure to the criteria
-- [Independent run v2](skills/mom-test/evals/eval-results-independent-v2.md) — same 8 prompts after a framework iteration. Resolves an over-flagging bug in Mode 1 and codifies offered-vs-realized commitment grading in Mode 3.
+- [Independent run v1](skills/mom-test/evals/eval-results-independent.md) - 8 fresh sub-agents, no exposure to the criteria
+- [Independent run v2](skills/mom-test/evals/eval-results-independent-v2.md) - same 8 prompts after a framework iteration. Resolves an over-flagging bug in Mode 1 and codifies offered-vs-realized commitment grading in Mode 3.
 
 8/8 pass on both independent runs. Differences between v1 and v2 are documented and reproducible.
 
